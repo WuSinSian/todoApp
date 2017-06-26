@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Http } from "@angular/http";
- const BASE_URL:string = 'http://localhost:3000/todos';
+import { Http } from '@angular/http';
+ const BASE_URL: string = 'http://localhost:3000/todos';
 @Component({
   selector: 'app-class',
   templateUrl: './class.component.html',
@@ -10,14 +10,15 @@ import { Http } from "@angular/http";
 
 export class ClassComponent implements OnInit {
   data: any = {};
-  Response: any ={};
+  Response: any = {};
+  placeholder = '請輸入數字，最少三位';
   constructor( private http: Http) { }
- 
+
   ngOnInit() {
-        this.data = {
-        'firstName': '姓',
-        'lastName': '名'
-     };
+    this.data = {
+       'firstName': 'Wu',
+       'lastName': 'Sean'
+    };
   }
 
     // onSubmit(form){
@@ -28,12 +29,12 @@ export class ClassComponent implements OnInit {
 
   //  doSubmit(f: NgForm, $event) {
   //     console.log(f);
-  //     console.log($event);         
+  //     console.log($event);
   //     if (f.invalid) {
   //       alert('表單無效，請檢查欄位!');
   //     }
   // }
-//method1
+// method1
 
   //  addTodo(data){
   //    alert('POSTING');
@@ -41,18 +42,18 @@ export class ClassComponent implements OnInit {
   //     .subscribe( data => this.data = data);
   //   alert('POSTED');
   //  }
- 
+
 
    addTodo(data){
      alert('POSTING');
     this.http.post(BASE_URL,{data :this.data})
-      .subscribe( Response => { 
+      .subscribe( Response => {
         this.Response = Response.status;
-        console.log("POSTED"); }  );
-      // .subscribe( data => console.log(data + 'is posted'));    
+        console.log('POSTED'); }  );
+      // .subscribe( data => console.log(data + 'is posted'));
    }
 
   checkValid(field, form) {
-     return form['submitted'] || field['touched'] && field['invalid']
+     return form['submitted'] || field['touched'] && field['invalid'];
   }
 }

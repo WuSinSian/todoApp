@@ -3,7 +3,8 @@
   <label>
     title
     <input type="text" formControlName='title'>
-    <span *ngIf = "form.get('title')['errors']?.required"> 請輸入標題</span>
+    <!--<span *ngIf = "form.get('title')['errors']?.required"> 請輸入標題</span>-->
+    <span *ngIf = "form.controls['title'].hasError('required')"> 請輸入標題</span>
   </label>
   <br>
     <div formGroupName="name">
