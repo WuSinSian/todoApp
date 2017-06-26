@@ -1,3 +1,42 @@
-<p>
-  reactive works!
-</p>
+
+<h2>以程式碼為主的表單開發方式</h2>
+<!--<form class="main" #f="ngForm" (ngSubmit)="onSubmit(f)">-->
+<!--<form class="form-horizontal"  #f="ngForm" (ngSubmit)="doSubmit(f, $event)" >-->
+
+<pre>
+f.invalid =　{{ f.invalid |json }}
+
+data = {{ data | json }}
+
+form.value = {{form['value']|json}}
+</pre>
+  <form #f="ngForm" [formGroup]="form" (ngSubmit)="submit()" >
+  <label>
+    title 
+    <input type="text" formControlName='title'>
+    <span *ngIf = "form.get('title')['errors']?.required"> 請輸入標題</span>
+  </label>
+  <br>
+    <div formGroupName="name">
+      <label>
+        firstName 
+        <input type="text"  formControlName='fisrtName'  >
+      </label>
+      <br>
+      <label>
+        LastName 
+        <input type="text" formControlName='lastName' >
+      </label>
+    </div>  
+  <br>
+   <button type="submit">送出表單</button>
+   <pre> 
+form.get('title').value = {{ form.get('title')['value'] }}
+form.get('title').valid = {{ form.get('title').valid}}
+form.get('title').invalid = {{ form.get('title').invalid}}
+form.get('title').touched = {{ form.get('title').touched}}
+
+</pre>
+</form>
+<hr>
+

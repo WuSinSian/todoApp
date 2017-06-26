@@ -1,27 +1,43 @@
 
 <h2>以範本為主的表單開發方式</h2>
 <!--<form class="main" #f="ngForm" (ngSubmit)="onSubmit(f)">-->
-<form class="form-horizontal"  #f="ngForm" (ngSubmit)="doSubmit(f, $event)" >
+<!--<form class="form-horizontal"  #f="ngForm" (ngSubmit)="doSubmit(f, $event)" >-->
+
+<pre>
+f.invalid =　{{ f.invalid |json }}
+  account.valid = {{ account['valid'] }}
+  account.invalid = {{ account['invalid'] }}
+data = {{ data | json }}
+Response = {{ Response | json }}
+form.value = {{f.value|json}}
+</pre>
+  <form class="form-horizontal"  #f="ngForm" (ngSubmit)="addTodo(data)" >
   <label>
     title (Template reference variables #name)
-    <input type="text" name="account" ngModel #account="ngModel" required>
+    <input type="text" name="account" ngModel #account="ngModel"  [(ngModel)]='data.account'
+            ngModel minlength="3">
   </label>
   <br>
   <label>
     firstName (Property Binding)
-    <input type="text" name="firstName" [ngModel]="data.firstName">
+    <input type="text" name="firstName" [(ngModel)]="data.firstName" ngModel required  >
   </label>
   <br>
   <label>
     LastName (Two Way Binding)
-    <input type="text" name="lastName" [(ngModel)]="data.lastName">
+    <input type="text" name="lastName" [(ngModel)]="data.lastName" ngModel required >
   </label>
   <br>
    <button class="destroy" type="submit">送出表單</button>
 </form>
 <hr>
 <P>field status </P>
-<pre>{{f.value|json}}</pre>
+
+
+<br>
+<pre>
+
+</pre>
 
 <P>field value</P>
 <ul>
