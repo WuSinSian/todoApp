@@ -10,20 +10,20 @@ export class ReactiveComponent implements OnInit {
   data: any = {};
 
   form: FormGroup;
-  
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.form = this.fb.group({
-      'title': ['title',Validators.required],
+      'title': ['title', [Validators.required ,  Validators.minLength(3) ,  Validators.maxLength(9)]],
       name: this.fb.group({
-        'fisrtName':['firstName',Validators.maxLength(3),Validators.maxLength(9)],
-        'lastName':['lastName',Validators.required]
+        'firstName': ['firstName', [Validators.required, Validators.pattern('[0-9]*')]],
+        'lastName': ['lastName', Validators.required]
       })
-    })
+    });
   }
 
   submit(){
- 
+
   }
 }
