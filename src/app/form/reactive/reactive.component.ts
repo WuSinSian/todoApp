@@ -15,11 +15,17 @@ export class ReactiveComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      'title': ['title', [Validators.required ,  Validators.minLength(3) ,  Validators.maxLength(9)]],
+      'title': ['012', [Validators.required ,  Validators.minLength(3) ,  Validators.maxLength(9) , Validators.pattern('[0-9]*')]],
       name: this.fb.group({
-        'firstName': ['firstName', [Validators.required, Validators.pattern('[0-9]*')]],
-        'lastName': ['lastName', Validators.required]
-      })
+        'firstName': ['Wu', [Validators.required]],
+        'lastName': ['Sean', Validators.required]
+      }),
+      'sex': ['male', [Validators.required]],
+      tel: this.fb.array([
+        this.fb.control('09', Validators.required),
+        this.fb.control('02', Validators.required),
+      ])
+
     });
   }
 
