@@ -1,4 +1,4 @@
-import {Validators, FormGroup,  FormBuilder} from '@angular/forms';
+import {FormArray, Validators,  FormGroup,   FormBuilder} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -29,6 +29,12 @@ export class ReactiveComponent implements OnInit {
     });
   }
 
+  addTel() {
+      const tel = this.form.get('tel') as FormArray;
+      tel.push(
+        this.fb.control('New Tel')
+      );
+  }
   submit(){
 
   }

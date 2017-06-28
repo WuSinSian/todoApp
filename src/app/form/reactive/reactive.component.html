@@ -42,22 +42,20 @@
          [formControlName]="i">
     </div>
 
+    <button type="button" (click)="addTel()">addTEL</button>
    <button type="submit" [disabled]='form.invalid'  >送出表單 </button>
 
 </form>
 
 
-   <pre>
-     {{form.value|json}}
-   </pre>
-   <pre>
+<pre>
+  {{form.value|json}}
+</pre>
+<pre>
 form.get('title').value = {{ form.get('title')['value'] }}
 form.get('title').valid = {{ form.get('title').valid}}
 form.get('title').invalid = {{ form.get('title').invalid}}
 form.get('title').touched = {{ form.get('title').touched}}
-
-
-
 </pre>
 
 <hr>
